@@ -1,0 +1,61 @@
+﻿
+@model NotleyApp.Models.NoteModel
+
+@{ 
+    ViewData["Title"] = "NoteDetail";
+}
+
+<div class="note-detail">
+    <div class="panel panel-default note-detail_panel">
+        <div class=" panel-heading note-detail_panel-header">
+            <h1 class="panel-title note-detail_panel-title">
+                @Model.Subject
+            </h1>
+        </div>
+        <div class="panel-body">
+            <div class="note-detail_date-section">
+                <div>
+                    <span class="note-detail_created-date-key">
+                        Created On;
+                    </span>
+                    <span class="note-detail_created-date-value">
+                        @Model.CreatedDate.Date.ToString(format:"MMMM,dd, yyyy")
+                    </span>
+                </div>
+                <div>
+                    <span class="note-detail_modified-date-key">
+                        Last Modified On;
+                    </span>
+                    <span class="note-detail_modified-date-value">
+                        @Model.LastModified.Date.ToString(format:"MMMM dd, yyyy")
+                    </span>
+                </div>
+            </div>
+            <hr/>
+            <div>
+                @Model.Detail
+            </div>
+        </div>
+        <div class="=panel-footer note-detail_footer">
+            <div class="note-detail_flex-container">
+                <div>
+                    <a class="note-detail_button" asp-action="Index">
+                        Back To List
+
+                    </a>
+                </div>
+                <div>
+                    <a class="note-detail_button" asp-action="NoteEditor" asp-route-id="@Model.ID">
+                        Edit Note
+                    </a>
+                </div>
+                <div>
+                    <a class="note-detail_button"asp-action="DeleteNote"asp-route-id="@Model.ID">
+                        Delete Note
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
